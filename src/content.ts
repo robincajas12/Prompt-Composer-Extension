@@ -196,8 +196,14 @@ async function insertSuggestion(suggestion: string) {
     if (!selection || selection.rangeCount === 0) return;
     const range = selection.getRangeAt(0);
     text = activeElement.textContent || '';
-    start = range.startOffset;
-    end = range.endOffset;
+    
+    const preCaretRange = range.cloneRange();
+    preCaretRange.selectNodeContents(activeElement);
+    preCaretRange.setEnd(range.startContainer, range.startOffset);
+    start = preCaretRange.toString().length;
+
+    preCaretRange.setEnd(range.endContainer, range.endOffset);
+    end = preCaretRange.toString().length;
   } else {
     return;
   }
@@ -206,41 +212,58 @@ async function insertSuggestion(suggestion: string) {
   const match = textBeforeCursor.match(/\$\$([a-zA-Z0-9_]*)$/);
 
   if (match && match.index !== undefined) { // Asegurarse de que match.index no sea undefined
-    const typedPart = match[0]; // $$functionName (e.g., $$withT)
     const replacementText = `$$${suggestion}()`; // e.g., $$withTone()
 
     // Calcular el inicio de la parte a reemplazar en el texto completo
     const replaceStartIndex = match.index;
     const replaceEndIndex = start; // Hasta la posición actual del cursor
 
-    const newText = text.substring(0, replaceStartIndex) + replacementText + text.substring(replaceEndIndex);
-
     if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
+      const newText = text.substring(0, replaceStartIndex) + replacementText + text.substring(replaceEndIndex);
       (activeElement as HTMLInputElement).value = newText;
       // Posicionar el cursor dentro de los paréntesis
       const newCursorPos = replaceStartIndex + replacementText.length - 1; // -1 para quedar dentro del paréntesis
       (activeElement as HTMLInputElement).setSelectionRange(newCursorPos, newCursorPos);
     } else if (activeElement.isContentEditable) {
-      // Para contenteditable, necesitamos manipular el DOM directamente
-      const range = window.getSelection()!.getRangeAt(0);
-      
-      // Crear un rango que cubra la parte a reemplazar
-      const tempRange = document.createRange();
-      tempRange.setStart(range.startContainer, replaceStartIndex);
-      tempRange.setEnd(range.startContainer, replaceEndIndex);
-      tempRange.deleteContents(); // Eliminar el texto $$typedFunctionName
+      // Para contenteditable, necesitamos manipular el DOM directamente para preservar el formato
+      const walker = document.createTreeWalker(activeElement, NodeFilter.SHOW_TEXT);
+      let charCount = 0;
+      let startNode: Node | undefined, startNodeOffset: number | undefined, endNode: Node | undefined, endNodeOffset: number | undefined;
 
-      const newNode = document.createTextNode(replacementText);
-      tempRange.insertNode(newNode);
+      while (walker.nextNode()) {
+          const node = walker.currentNode;
+          const nodeLength = node.textContent!.length;
 
-      // Mover el cursor dentro de los paréntesis
-      const newRange = document.createRange();
-      newRange.setStart(newNode, replacementText.length - 1); // -1 para quedar dentro del paréntesis
-      newRange.setEnd(newNode, replacementText.length - 1);
-      const selection = window.getSelection();
-      if (selection) {
-        selection.removeAllRanges();
-        selection.addRange(newRange);
+          if (startNode === undefined && charCount + nodeLength >= replaceStartIndex) {
+              startNode = node;
+              startNodeOffset = replaceStartIndex - charCount;
+          }
+          if (endNode === undefined && charCount + nodeLength >= replaceEndIndex) {
+              endNode = node;
+              endNodeOffset = replaceEndIndex - charCount;
+              break;
+          }
+          charCount += nodeLength;
+      }
+
+      if (startNode && endNode) {
+          const range = document.createRange();
+          range.setStart(startNode, startNodeOffset!);
+          range.setEnd(endNode, endNodeOffset!);
+          range.deleteContents();
+
+          const newNode = document.createTextNode(replacementText);
+          range.insertNode(newNode);
+
+          // Mover el cursor dentro de los paréntesis
+          const newRange = document.createRange();
+          newRange.setStart(newNode, replacementText.length - 1);
+          newRange.setEnd(newNode, replacementText.length - 1);
+          const selection = window.getSelection();
+          if (selection) {
+              selection.removeAllRanges();
+              selection.addRange(newRange);
+          }
       }
     }
   }
@@ -272,10 +295,18 @@ document.addEventListener('input', async (event) => {
     }
     const range = selection.getRangeAt(0);
     text = target.textContent || '';
-    cursorPosition = range.startOffset;
+    
+    const preCaretRange = range.cloneRange();
+    preCaretRange.selectNodeContents(target);
+    preCaretRange.setEnd(range.startContainer, range.startOffset);
+    cursorPosition = preCaretRange.toString().length;
+
     const tempRange = range.cloneRange();
     tempRange.collapse(true); // Colapsar al inicio del cursor
-    rect = tempRange.getClientRects()[0];
+    const clientRects = tempRange.getClientRects();
+    if (clientRects.length > 0) {
+        rect = clientRects[0];
+    }
   } else {
     hideSuggestionBox();
     hideParameterHintBox();
@@ -283,8 +314,8 @@ document.addEventListener('input', async (event) => {
   }
 
   const textBeforeCursor = text.substring(0, cursorPosition);
-  const matchFunctionCall = textBeforeCursor.match(/\$\$([a-zA-Z0-9_]+)\(([^)]*)$/); // $$func(param
-  const matchFunctionName = textBeforeCursor.match(/\$\$([a-zA-Z0-9_]*)$/); // $$func
+  const matchFunctionCall = textBeforeCursor.match(/\$\$([a-zA-Z0-9_]+)\(([^)]*)$/); // $func(param
+  const matchFunctionName = textBeforeCursor.match(/\$\$([a-zA-Z0-9_]*)$/); // $func
 
   if (rect) {
     const x = rect.left + window.scrollX;
