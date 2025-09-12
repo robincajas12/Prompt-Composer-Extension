@@ -156,28 +156,27 @@ function showParameterHintBox(x: number, y: number, metadata: FunctionMetadata) 
 
 function highlightSuggestion(index: number) {
   const box = document.getElementById(SUGGESTION_BOX_ID);
-  if (!box || !box.children[index]) return;
+  if (!box) return;
 
-  // Limpiar el resaltado anterior si el elemento todavía existe
-  // Esta parte ahora es menos crítica aquí porque showSuggestionBox lo limpia antes
-  if (selectedSuggestionIndex !== -1 && box.children[selectedSuggestionIndex]) {
-    const prevItem = box.children[selectedSuggestionIndex] as HTMLElement;
-    if (prevItem) {
-      prevItem.style.backgroundColor = '';
-      prevItem.style.color = '';
-    }
-  }
-  
+  const children = Array.from(box.children) as HTMLElement[];
+  if (index < 0 || index >= children.length) return;
+
+  // Limpiar todos los resaltados
+  children.forEach(el => {
+    el.style.backgroundColor = '';
+    el.style.color = '';
+  });
+
+  // Actualizar índice seleccionado
   selectedSuggestionIndex = index;
-  const newItem = box.children[selectedSuggestionIndex] as HTMLElement;
-  if (newItem) {
-    newItem.style.backgroundColor = '#61afef'; /* Azul claro */
-    newItem.style.color = '#282c34'; /* Texto oscuro para contraste */
-    newItem.scrollIntoView({
-      block: 'nearest'
-    });
-  }
+
+  // Resaltar el nuevo
+  const newItem = children[selectedSuggestionIndex];
+  newItem.style.backgroundColor = '#61afef'; // Azul claro
+  newItem.style.color = '#282c34';           // Texto oscuro para contraste
+  newItem.scrollIntoView({ block: 'nearest' });
 }
+
 
 async function insertSuggestion(suggestion: string) {
   const activeElement = document.activeElement as HTMLInputElement | HTMLTextAreaElement | HTMLElement;
@@ -458,3 +457,5 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => { 
   }
   return true;
 });
+
+

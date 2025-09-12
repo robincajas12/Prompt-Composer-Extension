@@ -22,6 +22,12 @@
     }
   ],
   "commands": {
+    "use-input-text": {
+      "suggested_key": {
+        "default": "Alt+O"
+      },
+      "description": "Usa el texto del input seleccionado como entrada para la plantilla"
+    },
     "execute-prompt": {
       "suggested_key": {
         "default": "Alt+P"
