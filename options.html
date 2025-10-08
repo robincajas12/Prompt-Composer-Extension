@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Composer Options</title>
+    <title data-i18n="optionsTitle">Prompt Composer Options</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,12 +11,27 @@
 </head>
 <body>
     <main class="main-container">
-        <h1>Prompt Composer</h1>
+        <h1 data-i18n="optionsH1">Prompt Composer</h1>
         <div class="content-wrapper">
+            <section class="card language-section">
+                <header class="card-header">
+                    <h2 data-i18n="language">Language</h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="languageSelector" data-i18n="selectLanguage">Select Language</label>
+                        <select id="languageSelector">
+                            <option value="en" data-i18n="languageEn">English</option>
+                            <option value="es" data-i18n="languageEs">Español</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
             <section class="card functions-section">
                 <header class="card-header">
-                    <h2>Custom Functions</h2>
-                    <button id="addFunctionBtn" class="btn btn-primary">Add Function</button>
+                    <h2 data-i18n="customFunctionsHeading">Custom Functions</h2>
+                    <button id="addFunctionBtn" class="btn btn-primary" data-i18n="addFunctionButton">Add Function</button>
                 </header>
                 <div class="card-body">
                     <div id="functionsList">
@@ -31,27 +46,27 @@
         <div class="modal-content">
             <section class="card add-function-section">
                 <header class="card-header">
-                    <h2>Add New Function</h2>
+                    <h2 data-i18n="addNewFunctionHeading">Add New Function</h2>
                     <button id="closeModalBtn" class="close-btn">&times;</button>
                 </header>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="functionName">Function Name</label>
-                        <input type="text" id="functionName" placeholder="e.g., myCustomFunction">
+                        <label for="functionName" data-i18n="functionNameLabel">Function Name</label>
+                        <input type="text" id="functionName" data-i18n-placeholder="functionNamePlaceholder" placeholder="e.g., myCustomFunction">
                     </div>
                     <div class="form-group">
-                        <label for="functionDescription">Description <small>(optional)</small></label>
-                        <input type="text" id="functionDescription" placeholder="e.g., A function to greet the user">
+                        <label for="functionDescription" data-i18n="functionDescriptionLabel">Description <small>(optional)</small></label>
+                        <input type="text" id="functionDescription" data-i18n-placeholder="functionDescriptionPlaceholder" placeholder="e.g., A function to greet the user">
                     </div>
                     <div class="form-group">
-                        <label for="functionParams">Parameters <small>(comma-separated)</small></label>
-                        <input type="text" id="functionParams" placeholder="e.g., name:string, age:number">
+                        <label for="functionParams" data-i18n="functionParamsLabel">Parameters <small>(comma-separated)</small></label>
+                        <input type="text" id="functionParams" data-i18n-placeholder="functionParamsPlaceholder" placeholder="e.g., name:string, age:number">
                     </div>
                     <div class="form-group">
-                        <label for="functionBody">Function Body <small>(template string)</small></label>
-                        <textarea id="functionBody" rows="5" placeholder="e.g., Hello, {name}!"></textarea>
+                        <label for="functionBody" data-i18n="functionBodyLabel">Function Body <small>(template string)</small></label>
+                        <textarea id="functionBody" rows="5" data-i18n-placeholder="functionBodyPlaceholder" placeholder="e.g., Hello, {name}!"></textarea>
                     </div>
-                    <button id="saveFunction" class="btn btn-primary">Save Function</button>
+                    <button id="saveFunction" class="btn btn-primary" data-i18n="saveFunctionButton">Save Function</button>
                 </div>
             </section>
         </div>

@@ -1,0 +1,144 @@
+{
+  "extensionName": {
+    "message": "Extensión Prompt Composer",
+    "description": "El nombre de la extensión."
+  },
+  "extensionDescription": {
+    "message": "Usa plantillas de prompt en cualquier campo de texto.",
+    "description": "La descripción de la extensión."
+  },
+  "commandUseInputText": {
+    "message": "Usa el texto del input seleccionado como entrada para la plantilla",
+    "description": "Descripción para el comando use-input-text."
+  },
+  "commandExecutePrompt": {
+    "message": "Reemplaza la plantilla en el campo de texto activo",
+    "description": "Descripción para el comando execute-prompt."
+  },
+  "optionsTitle": {
+    "message": "Opciones de Prompt Composer",
+    "description": "Título de la página de opciones."
+  },
+  "optionsH1": {
+    "message": "Prompt Composer",
+    "description": "Encabezado principal en la página de opciones."
+  },
+  "customFunctionsHeading": {
+    "message": "Funciones Personalizadas",
+    "description": "Encabezado para la sección de funciones personalizadas."
+  },
+  "addFunctionButton": {
+    "message": "Añadir Función",
+    "description": "Botón para añadir una nueva función."
+  },
+  "addNewFunctionHeading": {
+    "message": "Añadir Nueva Función",
+    "description": "Encabezado para el modal de añadir nueva función."
+  },
+  "functionNameLabel": {
+    "message": "Nombre de la Función",
+    "description": "Etiqueta para el input de nombre de función."
+  },
+  "functionNamePlaceholder": {
+    "message": "ej., miFuncionPersonalizada",
+    "description": "Placeholder para el input de nombre de función."
+  },
+  "functionDescriptionLabel": {
+    "message": "Descripción <small>(opcional)</small>",
+    "description": "Etiqueta para el input de descripción de función."
+  },
+  "functionDescriptionPlaceholder": {
+    "message": "ej., Una función para saludar al usuario",
+    "description": "Placeholder para el input de descripción de función."
+  },
+  "functionParamsLabel": {
+    "message": "Parámetros <small>(separados por coma)</small>",
+    "description": "Etiqueta para el input de parámetros de función."
+  },
+  "functionParamsPlaceholder": {
+    "message": "ej., nombre:string, edad:number",
+    "description": "Placeholder para el input de parámetros de función."
+  },
+  "functionBodyLabel": {
+    "message": "Cuerpo de la Función <small>(plantilla de texto)</small>",
+    "description": "Etiqueta para el input de cuerpo de función."
+  },
+  "functionBodyPlaceholder": {
+    "message": "ej., ¡Hola, {name}!",
+    "description": "Placeholder para el input de cuerpo de función."
+  },
+  "saveFunctionButton": {
+    "message": "Guardar Función",
+    "description": "Botón para guardar una nueva función."
+  },
+  "noFunctionsDefined": {
+    "message": "Aún no se han definido funciones personalizadas.",
+    "description": "Mensaje que se muestra cuando no hay funciones personalizadas definidas."
+  },
+  "descriptionLabel": {
+    "message": "Descripción: ",
+    "description": "Etiqueta para la descripción de la función."
+  },
+  "notAvailable": {
+    "message": "N/A",
+    "description": "No disponible."
+  },
+  "parametersLabel": {
+    "message": "Parámetros: ",
+    "description": "Etiqueta para los parámetros de la función."
+  },
+  "none": {
+    "message": "Ninguno",
+    "description": "Ninguno."
+  },
+  "bodyLabel": {
+    "message": "Cuerpo: ",
+    "description": "Etiqueta para el cuerpo de la función."
+  },
+  "deleteButton": {
+    "message": "Eliminar",
+    "description": "Texto del botón de eliminar."
+  },
+  "nameAndBodyRequired": {
+    "message": "El nombre y el cuerpo de la función son obligatorios.",
+    "description": "Mensaje de alerta cuando no se proporcionan el nombre y el cuerpo de la función."
+  },
+  "functionSaved": {
+    "message": "¡Función guardada!",
+    "description": "Mensaje de alerta cuando se guarda una función."
+  },
+  "functionDeleted": {
+    "message": "¡Función eliminada!",
+    "description": "Mensaje de alerta cuando se elimina una función."
+  },
+  "confirmDelete": {
+    "message": "¿Estás seguro de que quieres eliminar la función '$functionName$'?",
+    "description": "Mensaje de confirmación antes de eliminar una función.",
+    "placeholders": {
+      "functionName": {
+        "content": "$1",
+        "example": "miFuncion"
+      }
+    }
+  },
+  "noSuggestions": {
+    "message": "No hay sugerencias",
+    "description": "Mensaje que se muestra cuando no hay sugerencias."
+  },
+  "language": {
+    "message": "Idioma",
+    "description": "Encabezado de la sección de idioma."
+  },
+  "selectLanguage": {
+    "message": "Seleccionar Idioma",
+    "description": "Etiqueta para el selector de idioma."
+  },
+  "languageEn": {
+    "message": "English",
+    "description": "Opción de idioma inglés."
+  },
+  "languageEs": {
+    "message": "Español",
+    "description": "Opción de idioma español."
+  }
+}

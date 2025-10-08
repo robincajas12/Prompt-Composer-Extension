@@ -1,0 +1,144 @@
+{
+  "extensionName": {
+    "message": "Prompt Composer Extension",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Use prompt templates in any text field.",
+    "description": "The description of the extension."
+  },
+  "commandUseInputText": {
+    "message": "Use the selected input text as input for the template",
+    "description": "Description for the use-input-text command."
+  },
+  "commandExecutePrompt": {
+    "message": "Replace the template in the active text field",
+    "description": "Description for the execute-prompt command."
+  },
+  "optionsTitle": {
+    "message": "Prompt Composer Options",
+    "description": "Title of the options page."
+  },
+  "optionsH1": {
+    "message": "Prompt Composer",
+    "description": "Main heading on the options page."
+  },
+  "customFunctionsHeading": {
+    "message": "Custom Functions",
+    "description": "Heading for the custom functions section."
+  },
+  "addFunctionButton": {
+    "message": "Add Function",
+    "description": "Button to add a new function."
+  },
+  "addNewFunctionHeading": {
+    "message": "Add New Function",
+    "description": "Heading for the add new function modal."
+  },
+  "functionNameLabel": {
+    "message": "Function Name",
+    "description": "Label for the function name input."
+  },
+  "functionNamePlaceholder": {
+    "message": "e.g., myCustomFunction",
+    "description": "Placeholder for the function name input."
+  },
+  "functionDescriptionLabel": {
+    "message": "Description <small>(optional)</small>",
+    "description": "Label for the function description input."
+  },
+  "functionDescriptionPlaceholder": {
+    "message": "e.g., A function to greet the user",
+    "description": "Placeholder for the function description input."
+  },
+  "functionParamsLabel": {
+    "message": "Parameters <small>(comma-separated)</small>",
+    "description": "Label for the function parameters input."
+  },
+  "functionParamsPlaceholder": {
+    "message": "e.g., name:string, age:number",
+    "description": "Placeholder for the function parameters input."
+  },
+  "functionBodyLabel": {
+    "message": "Function Body <small>(template string)</small>",
+    "description": "Label for the function body input."
+  },
+  "functionBodyPlaceholder": {
+    "message": "e.g., Hello, {name}!",
+    "description": "Placeholder for the function body input."
+  },
+  "saveFunctionButton": {
+    "message": "Save Function",
+    "description": "Button to save a new function."
+  },
+  "noFunctionsDefined": {
+    "message": "No custom functions defined yet.",
+    "description": "Message shown when no custom functions are defined."
+  },
+  "descriptionLabel": {
+    "message": "Description: ",
+    "description": "Label for the function description."
+  },
+  "notAvailable": {
+    "message": "N/A",
+    "description": "Not available."
+  },
+  "parametersLabel": {
+    "message": "Parameters: ",
+    "description": "Label for the function parameters."
+  },
+  "none": {
+    "message": "None",
+    "description": "None."
+  },
+  "bodyLabel": {
+    "message": "Body: ",
+    "description": "Label for the function body."
+  },
+  "deleteButton": {
+    "message": "Delete",
+    "description": "Delete button text."
+  },
+  "nameAndBodyRequired": {
+    "message": "Function Name and Body are required.",
+    "description": "Alert message when function name and body are not provided."
+  },
+  "functionSaved": {
+    "message": "Function saved!",
+    "description": "Alert message when a function is saved."
+  },
+  "functionDeleted": {
+    "message": "Function deleted!",
+    "description": "Alert message when a function is deleted."
+  },
+  "confirmDelete": {
+    "message": "Are you sure you want to delete function '$functionName$'?",
+    "description": "Confirmation message before deleting a function.",
+    "placeholders": {
+      "functionName": {
+        "content": "$1",
+        "example": "myFunction"
+      }
+    }
+  },
+  "noSuggestions": {
+    "message": "No suggestions",
+    "description": "Message shown when there are no suggestions."
+  },
+  "language": {
+    "message": "Language",
+    "description": "Language section heading."
+  },
+  "selectLanguage": {
+    "message": "Select Language",
+    "description": "Label for the language selector."
+  },
+  "languageEn": {
+    "message": "English",
+    "description": "English language option."
+  },
+  "languageEs": {
+    "message": "Español",
+    "description": "Spanish language option."
+  }
+}

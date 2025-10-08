@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node dist/index.js",
-    "build": "webpack --config webpack.config.js && cp manifest.json dist/ && cp options.html dist/ && cp options.css dist/"
+    "build": "webpack --config webpack.config.js && cp manifest.json dist/ && cp options.html dist/ && cp options.css dist/ && cp -r _locales dist/"
   },
   "keywords": [],
   "author": "",
