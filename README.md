@@ -2,6 +2,10 @@
 
 Esta extensión de navegador está diseñada para mejorar la interacción con campos de texto. Permite a los usuarios generar o manipular contenido directamente en cualquier área de entrada de texto, facilitando la escritura y la edición. Simplemente enfócate en un campo de texto y la extensión te asistirá con sugerencias o transformaciones de texto.
 
+
+https://github.com/user-attachments/assets/7dc6b355-c972-4427-806b-3fb3b7d7487f
+
+
 ## Uso de la Extensión
 
 La extensión `Prompt Composer Extension` te permite componer y ejecutar plantillas de prompt directamente en cualquier campo de texto (input, textarea o elementos editables).
